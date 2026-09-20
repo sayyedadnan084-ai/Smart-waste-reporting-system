@@ -1,0 +1,3 @@
+package com.cleancity;
+import jakarta.servlet.*; import jakarta.servlet.annotation.WebFilter; import jakarta.servlet.http.*; import java.io.*;
+@WebFilter("/api/*") public class CorsFilter implements Filter {public void doFilter(ServletRequest rq,ServletResponse rs,FilterChain ch)throws IOException,ServletException{HttpServletRequest r=(HttpServletRequest)rq;HttpServletResponse s=(HttpServletResponse)rs;s.setHeader("Access-Control-Allow-Origin",r.getHeader("Origin")==null?"*":r.getHeader("Origin"));s.setHeader("Access-Control-Allow-Credentials","true");s.setHeader("Access-Control-Allow-Headers","Content-Type");s.setHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,OPTIONS");if("OPTIONS".equalsIgnoreCase(r.getMethod()))return;ch.doFilter(rq,rs);}}
