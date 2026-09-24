@@ -1,3 +1,4 @@
+
 package com.cleancity;
 
 import java.sql.Connection;
@@ -24,13 +25,13 @@ public class DB {
 
         Connection conn = DriverManager.getConnection(url, user, pass);
         
-        // Automatic Table Creation Script
+        // Sahi column name (password_hash) ke sath automatic table script
         try (Statement stmt = conn.createStatement()) {
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS users (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY, " +
                     "name VARCHAR(255) NOT NULL, " +
                     "email VARCHAR(255) NOT NULL UNIQUE, " +
-                    "password VARCHAR(255) NOT NULL, " +
+                    "password_hash VARCHAR(255) NOT NULL, " +
                     "role VARCHAR(50) DEFAULT 'USER')");
 
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS complaints (" +
